@@ -1,0 +1,42 @@
+---
+import { site } from '../data/site';
+import { siBilibili, siGithub } from 'simple-icons';
+
+const footerLinks = [
+  {
+    label: '哔哩哔哩',
+    href: 'https://space.bilibili.com/',
+    icon: siBilibili,
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/',
+    icon: siGithub,
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-shell">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-kicker">MTR 4.0 COURSE</span>
+        <strong>{site.shortName}</strong>
+        <p>{site.footerNote}</p>
+      </div>
+
+      <div class="footer-tags" aria-label="站点链接">
+        {footerLinks.map((link) => (
+          <a class="footer-tag" href={link.href} target="_blank" rel="noreferrer">
+            <span class="footer-tag-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false">
+                <path d={link.icon.path}></path>
+              </svg>
+            </span>
+            <span>{link.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

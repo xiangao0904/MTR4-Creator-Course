@@ -1,0 +1,23 @@
+---
+import { site } from '../data/site';
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+};
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="/" aria-label="返回首页">
+      <span>{site.shortName}</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      {site.nav.map((item) => (
+        <a class:list={{ active: isActive(item.href) }} href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+    <a class="header-cta" href="/courses/">开始学习</a>
+  </div>
+</header>

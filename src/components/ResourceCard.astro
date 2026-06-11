@@ -1,0 +1,21 @@
+---
+import type { ResourceItem } from '../data/resources';
+
+type Props = {
+  resource: ResourceItem;
+};
+
+const { resource } = Astro.props;
+---
+
+<article class="resource-card">
+  <div>
+    {resource.relatedEpisode && <span class="resource-episode">{resource.relatedEpisode}</span>}
+    <h3>{resource.title}</h3>
+    <p>{resource.description}</p>
+  </div>
+  {resource.status === 'available' && resource.fileUrl
+    ? <a class="btn secondary resource-btn" href={resource.fileUrl}>立即下载</a>
+    : <span class="btn disabled resource-btn" aria-disabled="true">即将开放</span>
+  }
+</article>

@@ -1,0 +1,14 @@
+---
+import type { FAQItem } from '../data/faq';
+
+type Props = {
+  item: FAQItem;
+};
+
+const { item } = Astro.props;
+---
+
+<details class="faq-item">
+  <summary>{item.question}</summary>
+  <p>{item.answer}</p>
+</details>

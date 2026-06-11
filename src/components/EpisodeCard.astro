@@ -1,0 +1,34 @@
+---
+import { statusText, type Episode } from '../data/episodes';
+
+type Props = {
+  episode: Episode;
+};
+
+const { episode } = Astro.props;
+---
+
+<article class="episode-card" id={episode.id}>
+  <div class="episode-index">
+    <span>{episode.number}</span>
+  </div>
+  <div class="episode-main">
+    <div class="episode-heading">
+      <div class="episode-heading-top">
+        <p>{episode.guestRole}</p>
+        <i class:list={['episode-badge', episode.status]}>{statusText[episode.status]}</i>
+      </div>
+      <h3>{episode.title}</h3>
+      <strong>{episode.shortTitle}</strong>
+    </div>
+    <p class="episode-summary">{episode.summary}</p>
+    <div class="episode-meta-line">
+      <span>{episode.status === 'released' ? '15 mins' : episode.status === 'editing' ? '制作中' : '规划阶段'}</span>
+      <span>{episode.tags[0]}</span>
+      <span>{episode.guestRole}</span>
+    </div>
+  </div>
+  <div class="episode-actions" aria-hidden="true">
+    <span>›</span>
+  </div>
+</article>

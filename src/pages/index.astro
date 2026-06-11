@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import RouteMap from '../components/RouteMap.astro';
+import { site } from '../data/site';
+import { episodes } from '../data/episodes';
+
+const instructors = [
+  { name: 'Huliawsl', role: '社区生态', photo: '' },
+  { name: 'aa', role: '配置开发', photo: '' },
+  { name: 'Continuate', role: '车辆模型', photo: '' },
+  { name: 'wjr596', role: '脚本开发', photo: '' },
+  { name: '席位待定', role: '席位待定', photo: '' },
+  { name: '席位待定', role: '席位待定', photo: '' },
+];
+---
+
+<BaseLayout title={site.name} description={site.description}>
+  <Hero />
+
+  <section class="section surface home-skills">
+    <div class="container">
+      <SectionHeading kicker="Core Skills" title="你将学到什么" />
+      <div class="feature-grid">
+        {site.highlights.map((item) => (
+          <article class="feature-card">
+            <span class="feature-card-icon">
+              <img src={item.icon} alt={item.iconAlt} loading="lazy" />
+            </span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        kicker="Route Map"
+        title="课程路线图"
+        lead="从资源结构到发布维护，系统掌握 MTR 车辆资源包的完整制作流程。"
+        align="center"
+      />
+      <RouteMap episodes={episodes} />
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="container">
+      <div class="instructor-head">
+        <SectionHeading kicker="Instructors" title="讲者简介" />
+        <p>汇集多位 MTR 资源包创作者的实践经验。</p>
+      </div>
+
+      <div class="instructor-grid">
+        {instructors.map((item) => (
+          <article class="instructor-card">
+            <div class="avatar">
+              {item.photo ? (
+                <img src={item.photo} alt={`${item.name} 头像`} loading="lazy" />
+              ) : (
+                <span>{item.name.slice(0, 1)}</span>
+              )}
+            </div>
+            <div>
+              <strong>{item.name}</strong>
+              <span>{item.role}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="home-cta">
+      <h2>开启你的列车创作之旅</h2>
+      <p>立即加入 MTR 4.0 开发者社区，开始你的第一个列车资源包创作之旅。</p>
+      <a class="btn primary" href="/courses/">立刻开始学习</a>
+    </div>
+  </section>
+</BaseLayout>

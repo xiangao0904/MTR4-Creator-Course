@@ -1,0 +1,73 @@
+---
+import type { Episode } from '../data/episodes';
+import { statusText } from '../data/episodes';
+
+type Props = {
+  episodes: Episode[];
+};
+
+const { episodes } = Astro.props;
+const routeColors = {
+  released: '#adc4ff',
+  editing: '#89a7e9',
+  planned: 'rgba(255, 255, 255, 0.18)',
+} as const;
+
+const routeTrackWidth = 1240;
+const routeLineInset = 48;
+const routeStep = 92;
+const routeLineWidth = routeTrackWidth - routeLineInset * 2;
+const segmentCount = Math.max(episodes.length - 1, 1);
+const routeSegmentSpan = routeStep * segmentCount;
+const routeLead = (routeLineWidth - routeSegmentSpan) / 2;
+const routeSegments = episodes.slice(1).map((episode, index) => {
+  const start = routeLead + index * routeStep;
+  const end = start + routeStep;
+  return { color: routeColors[episode.status], start, end };
+});
+const routeGradient = episodes
+  .slice(1)
+  .map((episode, index) => {
+    const start = routeLead + index * routeStep;
+    const end = start + routeStep;
+    const color = routeColors[episode.status];
+    return `${color} ${start}px ${end}px`;
+  })
+  .join(', ');
+const routeStartColor = routeSegments[0]?.color ?? routeColors.planned;
+const routeEndColor = routeSegments[routeSegments.length - 1]?.color ?? routeColors.planned;
+const routeProgress = `linear-gradient(to right, ${routeStartColor} 0 ${routeLead}px, ${routeGradient}, ${routeEndColor} ${routeLead + routeSegmentSpan}px ${routeLineWidth}px)`;
+---
+
+<div class="route-map" aria-label="课程路线图">
+  <div class="route-header">
+    <div>
+      <strong>Learning Line</strong>
+      <span>EP0 - EP10</span>
+    </div>
+    <div class="route-legend">
+      <span><i class="released"></i>{statusText.released}</span>
+      <span><i class="editing"></i>{statusText.editing}</span>
+      <span><i class="planned"></i>{statusText.planned}</span>
+    </div>
+  </div>
+  <div
+    class="route-track"
+    style={`--route-progress: ${routeProgress};`}
+  >
+    {episodes.map((episode) => (
+      <a
+        class:list={["route-stop", episode.status]}
+        href={`/courses/#${episode.id}`}
+        aria-label={`${episode.number} ${episode.title}`}
+      >
+        <span class="stop-dot">{episode.number.replace('EP', '')}</span>
+        <span class="stop-number">{episode.number}</span>
+        <span class="stop-title">{episode.shortTitle}</span>
+      </a>
+    ))}
+  </div>
+  <div class="route-actions">
+    <a class="btn primary" href="/courses/">查看详细内容</a>
+  </div>
+</div>

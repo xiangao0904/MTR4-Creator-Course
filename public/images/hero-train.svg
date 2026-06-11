@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-label="MTR train illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#142034"/>
+      <stop offset="1" stop-color="#0d1523"/>
+    </linearGradient>
+    <linearGradient id="train" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#dfe5ef"/>
+      <stop offset="0.55" stop-color="#aeb9ca"/>
+      <stop offset="1" stop-color="#758396"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="30" stdDeviation="18" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="900" height="520" fill="url(#bg)"/>
+  <g opacity="0.16" stroke="#8fb1ff" stroke-width="1">
+    <path d="M0 380h900M0 420h900M0 460h900M0 500h900"/>
+    <path d="M72 0v520M168 0v520M264 0v520M360 0v520M456 0v520M552 0v520M648 0v520M744 0v520M840 0v520"/>
+  </g>
+  <g transform="translate(72 154) skewX(-8)" filter="url(#shadow)">
+    <path d="M40 92c0-34 28-62 62-62h574c48 0 91 35 100 82l12 64c6 31-18 60-50 60H82c-23 0-42-19-42-42V92z" fill="url(#train)"/>
+    <path d="M74 96h80v66H74zM178 96h80v66h-80zM282 96h80v66h-80zM386 96h80v66h-80zM490 96h80v66h-80zM594 96h86v66h-86z" fill="#182235" opacity="0.92"/>
+    <path d="M706 100h54l11 55h-65z" fill="#182235" opacity="0.92"/>
+    <path d="M38 176h754" stroke="#b21f2d" stroke-width="15"/>
+    <path d="M95 220c0-14 11-25 25-25s25 11 25 25-11 25-25 25-25-11-25-25zM625 220c0-14 11-25 25-25s25 11 25 25-11 25-25 25-25-11-25-25z" fill="#121820"/>
+    <path d="M98 72h72v16H98z" fill="#1c4aaf"/>
+    <text x="108" y="86" font-size="16" font-family="Arial, sans-serif" font-weight="700" fill="#fff">01</text>
+  </g>
+  <path d="M90 438h700" stroke="#56667f" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  <path d="M132 468h700" stroke="#56667f" stroke-width="8" stroke-linecap="round" opacity="0.48"/>
+</svg>

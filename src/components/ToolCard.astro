@@ -1,0 +1,15 @@
+---
+import type { ToolItem } from '../data/tools';
+
+type Props = {
+  tool: ToolItem;
+};
+
+const { tool } = Astro.props;
+---
+
+<article class="tool-card">
+  <p>{tool.role}</p>
+  <h3>{tool.name}</h3>
+  <span>{tool.description}</span>
+</article>

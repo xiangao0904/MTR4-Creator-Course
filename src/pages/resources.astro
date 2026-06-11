@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import ToolCard from '../components/ToolCard.astro';
+import FAQItem from '../components/FAQItem.astro';
+import { resources, resourceCategories } from '../data/resources';
+import { tools } from '../data/tools';
+import { faqs } from '../data/faq';
+---
+
+<BaseLayout title="资源中心" description="MTR 4.0 资源包开发教程素材、模板、工具与常见问题。">
+  <section class="page-hero compact-hero">
+    <div class="container page-hero-inner">
+      <div>
+        <p class="section-kicker">Resources</p>
+        <h1>资源中心</h1>
+        <p>集中放置模板、示例、工具准备、目录结构、FAQ 和发布检查资料。第一版先做索引，文件上线后直接替换下载地址。</p>
+      </div>
+      <div class="page-hero-card page-hero-card-dark">
+        <strong>{resources.length} Items</strong>
+        <span>模板 / 示例 / 工具 / FAQ</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-divider"></div>
+      <SectionHeading kicker="Downloads" title="课程素材与模板" />
+      <div class="resource-groups">
+        {resourceCategories.map((category) => {
+          const group = resources.filter((item) => item.category === category);
+          return group.length > 0 && (
+            <section class="resource-group">
+              <div class="resource-group-title">
+                <h2>{category}</h2>
+                <span>{group.length} 个资源</span>
+              </div>
+              <div class="resource-grid">
+                {group.map((resource) => <ResourceCard resource={resource} />)}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="container">
+      <div class="section-divider"></div>
+      <SectionHeading kicker="Tools" title="工具准备" />
+      <div class="tool-grid">
+        {tools.map((tool) => <ToolCard tool={tool} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-divider"></div>
+      <SectionHeading kicker="Templates" title="推荐目录结构" />
+      <div class="code-grid">
+        <pre><code>{`MTR4_Tutorial_Pack/
+├── pack.mcmeta
+├── pack.png
+└── assets/
+    └── tutorial_pack/
+        ├── textures/
+        ├── models/
+        ├── sounds/
+        ├── scripts/
+        └── configs/`}</code></pre>
+        <pre><code>{`assets/
+└── tutorial_pack/
+    └── sounds/
+        └── train/
+            ├── run_loop.ogg
+            ├── acceleration.ogg
+            ├── deceleration.ogg
+            ├── door_open.ogg
+            ├── door_close.ogg
+            └── door_chime.ogg`}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="container faq-layout">
+      <div>
+        <div class="section-divider"></div>
+        <SectionHeading kicker="FAQ" title="常见问题" lead="这部分可以持续补充，减少评论区重复问题。" />
+      </div>
+      <div class="faq-list">
+        {faqs.slice(0, 4).map((item) => <FAQItem item={item} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

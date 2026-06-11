@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RouteMap from '../components/RouteMap.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import { episodes } from '../data/episodes';
+---
+
+<BaseLayout title="课程目录" description="MTR 4.0 资源包开发教程课程目录与学习路线图。">
+  <section class="page-hero compact-hero">
+    <div class="container page-hero-inner single">
+      <div>
+        <p class="section-kicker">Curriculum Directory</p>
+        <h1>课程目录</h1>
+        <p>从基础结构到高阶发布，按资源包结构、贴图、建模、UV、接入、音效、JCM JS 和发布维护逐步推进的完整学习路线。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="course-route-shell">
+        <div class="course-route-title">
+          <h2>学习路线图 / Route Map</h2>
+        </div>
+        <RouteMap episodes={episodes} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section course-directory">
+    <div class="container course-directory-grid">
+      <div>
+        <div class="directory-head">
+          <h2>课程目录</h2>
+          <div class="route-legend">
+            <span><i class="released"></i>已发布</span>
+            <span><i class="editing"></i>制作中</span>
+          </div>
+        </div>
+        <div class="episode-list">
+          {episodes.slice(0, 2).map((episode) => <EpisodeCard episode={episode} />)}
+        </div>
+      </div>
+
+      <aside class="suggestion-card">
+        <div class="suggestion-icon">◌</div>
+        <h3>学习建议</h3>
+        <div class="suggestion-list">
+          <div>
+            <strong>循序渐进</strong>
+            <p>请务必按 EP 顺序学习，后续课程的资产依赖于前期构建的基础包。</p>
+          </div>
+          <div>
+            <strong>动手实践</strong>
+            <p>不要只看不做。准备好 Blockbench 和文本编辑器，边看边练。</p>
+          </div>
+          <div>
+            <strong>参与讨论</strong>
+            <p>遇到报错，先利用资源中心的错误代码对照表，或在社区发帖求助。</p>
+          </div>
+        </div>
+
+        <div class="download-panel">
+          <p>需要初始模板？</p>
+          <span>下载 EP0 官方空白模板包</span>
+          <a class="btn secondary suggestion-btn" href="/resources/">下载 Template.zip</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
