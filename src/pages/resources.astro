@@ -57,40 +57,13 @@ import { faqs } from '../data/faq';
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-divider"></div>
-      <SectionHeading kicker="Templates" title="推荐目录结构" />
-      <div class="code-grid">
-        <pre><code>{`MTR4_Tutorial_Pack/
-├── pack.mcmeta
-├── pack.png
-└── assets/
-    └── tutorial_pack/
-        ├── textures/
-        ├── models/
-        ├── sounds/
-        ├── scripts/
-        └── configs/`}</code></pre>
-        <pre><code>{`assets/
-└── tutorial_pack/
-    └── sounds/
-        └── train/
-            ├── run_loop.ogg
-            ├── acceleration.ogg
-            ├── deceleration.ogg
-            ├── door_open.ogg
-            ├── door_close.ogg
-            └── door_chime.ogg`}</code></pre>
-      </div>
-    </div>
-  </section>
+ 
 
   <section class="section surface">
     <div class="container faq-layout">
       <div>
         <div class="section-divider"></div>
-        <SectionHeading kicker="FAQ" title="常见问题" lead="这部分可以持续补充，减少评论区重复问题。" />
+        <SectionHeading kicker="FAQ" title="常见问题" lead="整理了课程相关高频问题，持续更新。" />
       </div>
       <div class="faq-list">
         {faqs.slice(0, 4).map((item) => <FAQItem item={item} />)}
