@@ -5,18 +5,18 @@ import { site } from '../data/site';
 <section class="hero">
   <div class="container hero-inner">
     <div class="hero-copy">
-      <p class="hero-eyebrow">
+      <p class="hero-eyebrow" data-reveal>
         <span>{site.eyebrow}</span>
       </p>
 
-      <h1>{site.title}</h1>
-      <p class="hero-lead">{site.description}</p>
+      <h1 data-reveal style="--reveal-delay: 0.08s;">{site.title}</h1>
+      <p class="hero-lead" data-reveal style="--reveal-delay: 0.16s;">{site.description}</p>
 
-      <div class="btn-row hero-actions">
+      <div class="btn-row hero-actions" data-reveal style="--reveal-delay: 0.24s;">
         <a class="btn primary" href="/courses/">{site.heroPrimaryAction}</a>
         <a class="btn secondary" href="/courses/">{site.heroSecondaryAction}</a>
       </div>
     </div>
   </div>
-  <img class="hero-train" src="/images/big.png" alt="MTR 4.0 资源包开发教程主宣传图" />
+  <img class="hero-train" src="/images/big.png" alt="MTR 4.0 资源包开发教程主宣传图" data-reveal style="--reveal-delay: 0.12s;" />
 </section>

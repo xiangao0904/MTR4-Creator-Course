@@ -8,7 +8,7 @@ type Props = {
 const { item } = Astro.props;
 ---
 
-<details class="faq-item">
+<details class="faq-item" data-reveal>
   <summary>{item.question}</summary>
   <p>{item.answer}</p>
 </details>

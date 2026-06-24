@@ -8,7 +8,7 @@ type Props = {
 const { resource } = Astro.props;
 ---
 
-<article class="resource-card">
+<article class="resource-card" data-reveal>
   <div>
     {resource.relatedEpisode && <span class="resource-episode">{resource.relatedEpisode}</span>}
     <h3>{resource.title}</h3>

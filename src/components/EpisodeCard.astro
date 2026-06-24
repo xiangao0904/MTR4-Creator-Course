@@ -8,7 +8,7 @@ type Props = {
 const { episode } = Astro.props;
 ---
 
-<article class="episode-card" id={episode.id}>
+<article class="episode-card" id={episode.id} data-reveal>
   <div class="episode-index">
     <span>{episode.number}</span>
   </div>

@@ -39,7 +39,7 @@ const routeEndColor = routeSegments[routeSegments.length - 1]?.color ?? routeCol
 const routeProgress = `linear-gradient(to right, ${routeStartColor} 0 ${routeLead}px, ${routeGradient}, ${routeEndColor} ${routeLead + routeSegmentSpan}px ${routeLineWidth}px)`;
 ---
 
-<div class="route-map" aria-label="课程路线图">
+<div class="route-map" aria-label="课程路线图" data-reveal>
   <div class="route-header">
     <div>
       <strong>Learning Line</strong>

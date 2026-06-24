@@ -7,12 +7,11 @@ import { site } from '../data/site';
 import { episodes } from '../data/episodes';
 
 const instructors = [
-  { name: 'Vulpard', role: '社区生态', photo: '' },
-  { name: 'aa', role: '配置开发', photo: '' },
-  { name: 'Continuate', role: '车辆模型', photo: '' },
-  { name: 'wjr596', role: '脚本开发', photo: '' },
-  { name: '席位待定', role: '席位待定', photo: '' },
-  { name: '席位待定', role: '席位待定', photo: '' },
+  { name: 'AA', role: '配置开发', photo: '/images/speakers/aa.jpg' },
+  { name: 'Continuate', role: '车辆模型', photo: '/images/speakers/continueate.jpg' },
+  { name: 'Souto35', role: '材质贴图', photo: '/images/speakers/souto.jpg' },
+  { name: 'Vulpard', role: '社区生态 / 音效', photo: '/images/speakers/vulpard.jpg' },
+  { name: 'Wjr596', role: '脚本开发', photo: '/images/speakers/wjr.jpg' },
 ];
 ---
 
@@ -23,8 +22,8 @@ const instructors = [
     <div class="container">
       <SectionHeading kicker="Core Skills" title="你将学到什么" />
       <div class="feature-grid">
-        {site.highlights.map((item) => (
-          <article class="feature-card">
+        {site.highlights.map((item, index) => (
+          <article class="feature-card" data-reveal style={`--reveal-delay: ${0.06 * index}s;`}>
             <span class="feature-card-icon">
               <img src={item.icon} alt={item.iconAlt} loading="lazy" />
             </span>
@@ -52,12 +51,12 @@ const instructors = [
     <div class="container">
       <div class="instructor-head">
         <SectionHeading kicker="Instructors" title="讲者简介" />
-        <p>汇集多位 MTR 资源包创作者的实践经验。</p>
+        <p data-reveal>按字母顺序排序</p>
       </div>
 
       <div class="instructor-grid">
-        {instructors.map((item) => (
-          <article class="instructor-card">
+        {instructors.map((item, index) => (
+          <article class="instructor-card" data-reveal style={`--reveal-delay: ${0.05 * index}s;`}>
             <div class="avatar">
               {item.photo ? (
                 <img src={item.photo} alt={`${item.name} 头像`} loading="lazy" />
@@ -75,8 +74,8 @@ const instructors = [
     </div>
   </section>
 
-  <section class="container">
-    <div class="home-cta">
+  <section class="container home-cta-section">
+    <div class="home-cta" data-reveal>
       <h2>开启你的列车创作之旅</h2>
       <p>从 EP0 开始，完成你的 MTR 4.0 资源包。</p>
       <a class="btn primary" href="/courses/">立刻开始学习</a>

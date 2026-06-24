@@ -9,7 +9,7 @@ type Props = {
 const { kicker, title, lead, align = 'left' } = Astro.props;
 ---
 
-<div class:list={["section-heading", align]}>
+<div class:list={["section-heading", align]} data-reveal>
   {kicker && <p class="section-kicker">{kicker}</p>}
   <h2 class="section-title">{title}</h2>
   {lead && <p class="section-lead">{lead}</p>}
